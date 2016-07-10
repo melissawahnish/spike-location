@@ -27,6 +27,11 @@ gem 'jquery-ui-rails'
 gem "paperclip"
 gem 'dropzonejs-rails'
 
+gem 'geocoder'
+gem 'underscore-rails'
+gem 'gmaps4rails'
+gem 'markerclustererplus-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

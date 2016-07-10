@@ -13,6 +13,18 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+    # @coordinates = Gmaps4rails.build_markers(@location) do |location, marker|
+    #   marker.lat location.latitude
+    #   marker.lng location.longitude
+    # end  
+    # @coordinates = {lng: @location.longitude, lat: @location.latitude}
+    @coordinates = {lng: @location.longitude, lat: @location.latitude, radius: 800}
+
+    # @circles_json = '[
+    #  {"lng": -122.214897, "lat": 37.772323, "radius": 1000000},
+    #  //you can add whatever customization within the hash
+    #  {"lng": 122.214897, "lat": 37.772323, "radius": 1000000, "strokeColor": "#FF0000"}
+    # ]'
   end
 
   # GET /locations/new
@@ -73,7 +85,9 @@ class LocationsController < ApplicationController
     def location_params
       params.require(:location).permit(
         :description, 
-        location_images_attributes: [:id, :picture, :picture_order, :_destroy, :location_id]
+        :address_1, :address_2, :city, :region, 
+        :country, :zip,
+        location_images_attributes: [:id, :picture, :picture_order, :_destroy, :location_id]        
       )
     end
 end

@@ -5,5 +5,25 @@
   <%= @location.description %>
 </p>
 
+<% @location.location_images.each do |image| %>
+
+  <%= image_tag image.picture.url %>
+
+<% end %>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
+<script type="text/javascript">
+	handler = Gmaps.build('Google');
+	handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+	  // markers = handler.addMarker(<%=raw @coordinates.to_json %>);
+	  markers = handler.addCircle(<%=raw @coordinates.to_json %>);
+	  handler.bounds.extendWith(markers);
+	  handler.fitMapToBounds(markers);
+	  handler.getMap().setZoom(15);
+	});
+</script>
