@@ -1,6 +1,8 @@
 class Location < ActiveRecord::Base
 	has_many :location_images
-	has_many :date_availables
+	has_many :available_dates
+	has_many :reservations
+
 	accepts_nested_attributes_for :location_images, allow_destroy: true
 
 	geocoded_by :full_street_address   

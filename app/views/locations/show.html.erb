@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<p id="alert"><%= alert %></p>
 <p>
   <strong>Description:</strong>
   <%= @location.description %>
@@ -13,6 +13,16 @@
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<div>
+	<%= form_for Reservation.new do |f| %>
+		<%= f.text_field :start_date, value: Date.tomorrow %>
+		<%= f.text_field :end_date, value: Date.today + 2.days %>
+		<%= f.hidden_field :location_id, value: @location.id %>
+		<%= f.submit "Reserve Location" %>
+	<% end %>	
+
 </div>
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
