@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :date_available do
+  factory :available_date do
     association ""
     available_date "2016-07-15"
     association ""
