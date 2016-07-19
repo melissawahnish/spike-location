@@ -17,4 +17,6 @@
 //= require underscore
 //= require gmaps/google
 //= require markerclusterer
+//= require moment 
+//= require fullcalendar
 //= require_tree .

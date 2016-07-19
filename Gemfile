@@ -32,6 +32,9 @@ gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

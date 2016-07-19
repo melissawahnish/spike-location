@@ -15,4 +15,9 @@ class Location < ActiveRecord::Base
 	def address_changed?
 		address_1_changed? || city_changed? || region_changed? || country_changed?
 	end
+
+	def future_reserved_dates
+	  self.reservations.where("end_date >= ?", Date.today)
+	end
+
 end

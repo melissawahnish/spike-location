@@ -25,6 +25,8 @@
 
 </div>
 
+<div id="calendar", style='width: 600px;'></div>
+
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
 <script type="text/javascript">
@@ -36,4 +38,11 @@
 	  handler.fitMapToBounds(markers);
 	  handler.getMap().setZoom(15);
 	});
+
+ $('#calendar').fullCalendar({
+ 		events: '<%=@location.id%>.json',
+ 		eventBackgroundColor: "#bdc3c7"
+
+ });
+
 </script>
