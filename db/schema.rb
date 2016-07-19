@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708150813) do
+ActiveRecord::Schema.define(version: 20160715163434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "date_availables", force: :cascade do |t|
+    t.integer  "location_id"
+    t.date     "available_date"
+    t.integer  "reservation_id"
+    t.boolean  "reserved",       default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
 
   create_table "location_images", force: :cascade do |t|
     t.integer  "location_id"
@@ -42,6 +51,14 @@ ActiveRecord::Schema.define(version: 20160708150813) do
     t.float    "longitude"
     t.float    "latitude"
     t.string   "zip"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_foreign_key "location_images", "locations"
