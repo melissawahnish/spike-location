@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :locations do
-    get :add_images, on: :member
+    member do 
+      get :add_images
+      get :calendar
+      get :add_available_dates
+    end
+    
   end
 
   resources :reservations, only: :create

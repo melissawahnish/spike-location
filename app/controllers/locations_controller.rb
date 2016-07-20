@@ -1,5 +1,8 @@
 class LocationsController < ApplicationController
-  before_action :set_location, only: [:show, :edit, :update, :destroy, :add_images]
+  before_action :set_location, only: [
+      :show, :edit, :update, 
+      :destroy, :add_images, :calendar,
+      :add_available_dates]
 
 
   def add_images   
@@ -31,6 +34,14 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
+  end
+
+  def calendar    
+  end
+
+  def add_available_dates
+    @location.create_available_dates(params[:start_date], params[:end_date])
+    redirect_to calendar_location_path(location), notice: "Successfully added available dates"
   end
 
   # POST /locations
