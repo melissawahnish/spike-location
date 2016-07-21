@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <p id="alert"><%= alert %></p>
+
 <p>
   <strong>Description:</strong>
   <%= @location.description %>
@@ -41,7 +42,7 @@
 
  $('#calendar').fullCalendar({
  		events: '<%=@location.id%>.json',
- 		eventBackgroundColor: "#bdc3c7"
+ 		eventBackgroundColor: "green"
 
  });
 

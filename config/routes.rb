@@ -4,8 +4,7 @@ Rails.application.routes.draw do
       get :add_images
       get :calendar
       get :add_available_dates
-    end
-    
+    end   
   end
 
   resources :reservations, only: :create

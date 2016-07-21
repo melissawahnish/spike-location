@@ -19,7 +19,6 @@ class LocationsController < ApplicationController
      
     # @coordinates = {lng: @location.longitude, lat: @location.latitude}
     @coordinates = {lng: @location.longitude, lat: @location.latitude, radius: 800}
-   
     # @circles_json = '[
     #  {"lng": -122.214897, "lat": 37.772323, "radius": 1000000},
     #  //you can add whatever customization within the hash
@@ -41,7 +40,7 @@ class LocationsController < ApplicationController
 
   def add_available_dates
     @location.create_available_dates(params[:start_date], params[:end_date])
-    redirect_to calendar_location_path(location), notice: "Successfully added available dates"
+    redirect_to calendar_location_path(@location), notice: "Successfully added available dates"
   end
 
   # POST /locations

@@ -20,6 +20,10 @@ class Location < ActiveRecord::Base
 	  self.reservations.where("end_date >= ?", Date.today)
 	end
 
+	def future_available_dates
+		self.available_dates.where("available_date >= ?", Date.today).where(reserved: false)
+	end
+
 	def create_available_dates(start_date, end_date)
 		dates = start_date.upto(end_date)
 		dates.each do |date|
