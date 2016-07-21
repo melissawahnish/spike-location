@@ -1,7 +1,6 @@
 json.array!(@location.future_reserved_dates) do |date|
-	json.id date.id
-	json.title date.start_date
-  json.start date.start_date
+	json.title "Reservation #{date.id}" 
+  json.start date.start_date + 15.hours
   json.end date.end_date + 11.hours
 end
 

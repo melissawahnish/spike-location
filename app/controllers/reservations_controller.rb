@@ -1,5 +1,9 @@
 class ReservationsController < ApplicationController
 
+  def index
+    @reservations = Reservation.all
+  end
+
 	def create
     @reservation = Reservation.new(reservation_params)
 
