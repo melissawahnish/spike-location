@@ -10,7 +10,10 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    @locations = LocationMatchesService.new({
+      start_date: params[:start_date], 
+      end_date: params[:end_date]
+      }).matches
   end
 
   # GET /locations/1

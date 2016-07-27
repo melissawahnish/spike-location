@@ -1,0 +1,8 @@
+<h1>Home#home</h1>
+<p>Search for a location</p>
+
+<%= form_tag locations_path, method: :get do %>
+	<%= text_field_tag :start_date %>
+	<%= text_field_tag :end_date %>
+	<%= submit_tag "Search For Location" %>
+<% end %>
