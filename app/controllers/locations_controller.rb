@@ -12,7 +12,10 @@ class LocationsController < ApplicationController
   def index
     @locations = LocationMatchesService.new({
       start_date: params[:start_date], 
-      end_date: params[:end_date]
+      end_date: params[:end_date],
+      city: params[:city],
+      region: params[:region],
+      country: params[:country]
       }).matches
   end
 

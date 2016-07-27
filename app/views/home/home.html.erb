@@ -4,5 +4,8 @@
 <%= form_tag locations_path, method: :get do %>
 	<%= text_field_tag :start_date %>
 	<%= text_field_tag :end_date %>
+	<%= text_field_tag :city %>
+	<%= text_field_tag :state %>
+	<%= text_field_tag :country %>
 	<%= submit_tag "Search For Location" %>
 <% end %>
