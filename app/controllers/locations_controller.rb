@@ -1,8 +1,8 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [
-      :show, :edit, :update, 
-      :destroy, :add_images, :calendar,
-      :add_available_dates]
+    :show, :edit, :update, 
+    :destroy, :add_images, :calendar,
+    :add_available_dates]
 
 
   def add_images   
@@ -16,7 +16,7 @@ class LocationsController < ApplicationController
       city: params[:city],
       region: params[:region],
       country: params[:country]
-      }).matches
+    }).matches
   end
 
   # GET /locations/1
