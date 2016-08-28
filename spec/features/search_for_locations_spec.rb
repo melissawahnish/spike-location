@@ -32,15 +32,24 @@ feature "Visitor searches for locations to reserve" do
 		expect(page).to have_content "Search for a location"
 		fill_in "start_date", with: Date.tomorrow
 		fill_in "end_date", with: Date.today + 2.days
-		fill_in "city", with: "New York"
-		fill_in "state", with: "NY"
-		fill_in "country", with: "US"
+		select "New York"
+		select "NY"
 		click_button "Search For Location"
 
 		expect(page).to have_content(@location1.address_1)
 		expect(page).to have_content(@location2.address_1)
 		expect(page).not_to have_content(@location3.address_1)
 		expect(page).not_to have_content(@location4.address_1)
+	end
+
+	scenario "Just visits index page with no search" do
+
+		visit locations_path
+
+		expect(page).to have_content(@location1.address_1)
+		expect(page).to have_content(@location2.address_1)
+		expect(page).to have_content(@location3.address_1)
+		expect(page).to have_content(@location4.address_1)
 	end
 
 end

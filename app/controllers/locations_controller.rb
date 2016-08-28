@@ -10,13 +10,17 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = LocationMatchesService.new({
-      start_date: params[:start_date], 
-      end_date: params[:end_date],
-      city: params[:city],
-      region: params[:region],
-      country: params[:country]
-    }).matches
+    if params[:commit].present?
+      @locations = SearchForLocationService.new({
+        start_date: params[:start_date], 
+        end_date: params[:end_date],
+        city: params[:city],
+        region: params[:region],
+        country: params[:country]
+      }).matches.page(params[:page])
+    else
+      @locations = Location.page(params[:page])
+    end
   end
 
   # GET /locations/1

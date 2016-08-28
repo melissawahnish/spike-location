@@ -1,5 +1,6 @@
-class LocationMatchesService 
-
+class SearchForLocationService 
+	attr_reader :params
+	
 	def initialize(params)
 		@start_date = params[:start_date]
 		@end_date = params[:end_date]		

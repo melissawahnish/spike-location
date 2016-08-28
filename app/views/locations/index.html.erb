@@ -11,8 +11,10 @@
   </thead>
 
   <tbody>
+
     <% @locations.each do |location| %>
       <tr>
+        <td><%= location.title %></td>
         <td><%= location.description %></td>
         <td><%= location.address_1 %></td>
         <td><%= link_to 'Show', location %></td>
@@ -22,6 +24,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @locations %>
 
 <br>
 

@@ -35,6 +35,8 @@ gem 'markerclustererplus-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

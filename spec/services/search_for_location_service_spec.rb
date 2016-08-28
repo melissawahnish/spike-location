@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe LocationMatchesService do
+describe SearchForLocationService do
   before do
     @location1 = FactoryGirl.create(:location_with_available_dates)
     @location2 = FactoryGirl.create(:location_with_available_dates,
@@ -19,7 +19,7 @@ describe LocationMatchesService do
   	context "visitor searches with start date and end date" do
   		it "returns locations with available dates for the search dates" do
   			params = {start_date: Date.tomorrow.to_s, end_date: (Date.tomorrow + 2.days).to_s}
-  			matches = LocationMatchesService.new(params).matches
+  			matches = SearchForLocationService.new(params).matches
         expect(matches.count).to eq 3
   			expect(matches.include?(@location1)).to eq true
         expect(matches.include?(@location2)).to eq true
@@ -27,14 +27,13 @@ describe LocationMatchesService do
   		end
   	end
     context "visitor searches with start date,end date, city, state, country" do
-      it "returns locations with available dates for the search dates" do
+      it "returns locations with available dates for the search dates near New York " do
         params = {start_date: Date.tomorrow.to_s, 
           end_date: (Date.tomorrow + 2.days).to_s,
           city: "New York",
-          region: "NY",
-          country: "US"
+          region: "NY"
         }
-        matches = LocationMatchesService.new(params).matches
+        matches = SearchForLocationService.new(params).matches
         expect(matches.count(:all)).to eq 2
         expect(matches.include?(@location1)).to eq true
         expect(matches.include?(@location2)).to eq true

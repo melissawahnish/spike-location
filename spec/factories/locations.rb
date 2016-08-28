@@ -1,5 +1,11 @@
 FactoryGirl.define do
+
+  sequence :title do |n|
+    Faker::Pokemon.name + n.to_s
+  end
+
   factory :location do
+    title 
     description Faker::Lorem.paragraph(2)
     address_1 "151 W 34th St"
     city "New York"

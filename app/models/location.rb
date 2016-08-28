@@ -36,4 +36,12 @@ class Location < ActiveRecord::Base
 		end
 	end
 
+	def self.city_names
+		Location.distinct.pluck(:city).sort!
+	end
+
+	def self.region_names
+		Location.distinct.pluck(:region).sort!
+	end
+
 end

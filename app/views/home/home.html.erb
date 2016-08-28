@@ -1,11 +1,13 @@
-<h1>Home#home</h1>
 <p>Search for a location</p>
 
 <%= form_tag locations_path, method: :get do %>
-	<%= text_field_tag :start_date %>
-	<%= text_field_tag :end_date %>
-	<%= text_field_tag :city %>
-	<%= text_field_tag :state %>
-	<%= text_field_tag :country %>
+	<%= label_tag(:start_date, "Check In") %>
+	<%= text_field_tag(:start_date, nil, id: "datepicker") %>
+	<%= label_tag(:end_date, "Check Out") %>
+	<%= text_field_tag(:end_date, nil, id: "datepicker") %>
+	<%= label_tag(:city, "City") %>
+	<%= select_tag(:city, options_for_select(Location.city_names), prompt: "Select City")%>
+	<%= label_tag(:region, "State/Province") %>
+	<%= select_tag(:region, options_for_select(Location.region_names), prompt: "Select State/Region") %>
 	<%= submit_tag "Search For Location" %>
 <% end %>
